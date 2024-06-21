@@ -1,0 +1,17 @@
+<div class="input-container" [ngClass]="[size]">
+  @if (label) {
+    <label [ngClass]="{focus: on}" [htmlFor]="id"> {{ label }} </label>
+  }
+
+  @if (type === "password") {
+    <input [id]="id"  [type]="open? 'text' : 'password' "  [(ngModel)]="value"
+      (focus)="focus = true" (blur)="focus = false" (ngModelChange)="onChange(value)">
+    @if(on){
+      <img [src]="eyePath" (click)="open = !open" [style.bottom]="open? '.225rem' : '.5rem'" />
+    }
+  }
+  @else {
+    <input [id]="id"  [type]="type"  [(ngModel)]="value"
+      (focus)="focus = true" (blur)="focus = false" (ngModelChange)="onChange(value)">
+  }
+</div>
